@@ -241,9 +241,9 @@ class AOAI_TOOLS(LOAD_CONFIG):
             vector = row2['search_vector']
             df_tmp = df_all.copy()
 
-            # コサイン類似度を計算して新しい列に追加
+            # Calculate cosine similarity
             df_tmp['similarity'] = df_tmp['search_vector'].apply(lambda x: cosine_similarity(vector.reshape(1, -1), x.reshape(1, -1))[0][0])
-            # 類似度に基づいてソート（降順）
+            # Sort by similarity
             df_tmp_sorted = df_tmp.sort_values(by='similarity', ascending=False)
             
             tmp_list = []
