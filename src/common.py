@@ -33,6 +33,14 @@ class LOAD_CONFIG():
 
         self.CONFIDENCE_COSINE_SIMILARITY = self.config['CONFIDENCE_COSINE_SIMILARITY']
 
+        ## Data path
+        self.ORIGINAL_FAQ = self.config['DATA_PATH']['ORIGINAL_FAQ']
+        self.AUGMENTED_QA = self.config['DATA_PATH']['AUGMENTED_QA']
+        self.AUGMENTED_Q = self.config['DATA_PATH']['AUGMENTED_Q']
+
+        ## Prompt path
+        self.OPERATIONAL_PROMPTS = self.config['PROMPTS_PATH']['OPERATIONAL_PROMPTS']
+
     def load_config(self):
         '''
         Load and extract config yml file.

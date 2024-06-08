@@ -11,11 +11,11 @@ tools.setClient()
 conversation_history = []
 
 ## Load the data
-df_all = pd.read_pickle('./data/df_all.pkl')
+df_all = pd.read_pickle(tools.AUGMENTED_QA)
 
 ## Load the prompts
 tools.load_prompts(prompt_name='QA_prompt_template', 
-                    prompt_path='./prompts/operational_prompts.yml')
+                    prompt_path=tools.OPERATIONAL_PROMPTS)
 prompt_template = tools.promptBank['QA_prompt_template']['PROMPTS']
 
 

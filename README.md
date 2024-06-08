@@ -42,6 +42,13 @@
         EMBEDDED_MODEL: 'YOUR_DEPLOYED_TEXT_EMBEDDING_MODEL'
 
     CONFIDENCE_COSINE_SIMILARITY: 0.6
+    DATA_PATH:
+        ORIGINAL_FAQ: 'data/Original_FAQ_M365.csv'
+        AUGMENTED_QA: 'data/df_all.pkl'
+        AUGMENTED_Q: 'data/df_queries.pkl'
+
+    PROMPTS_PATH:
+        OPERATIONAL_PROMPTS: './prompts/operational_prompts.yml'
     ```
 
     - `AOAI`
@@ -52,6 +59,12 @@
         - `PARAMETERS`: モデルに渡すパラメータ群。詳しくは[こちら](https://learn.microsoft.com/ja-jp/azure/ai-services/openai/reference)を参照。
         - `EMBEDDED_MODEL`: 利用する埋め込みモデルの名前
     - `CONFIDENCE_COSINE_SIMILARITY`: cosine類似度利用時のしきい値
+    - `DATA_PATH`
+        - `ORIGINAL_FAQ`: 元としたFAQ(csv形式)のパス
+        - `AUGMENTED_QA`: 上記csvを元にQAを元にQを生成した(`pandas DataFrame`形式)のパス
+        - `AUGMENTED_Q`: 上記csvを元にQと同等のQを生成(`pandas DataFrame`形式)のパス
+    - `PROMPTS_PATH`
+        - `OPERATIONAL_PROMPTS`: 利用プロンプトのパス
 
 4. アプリを実行
 
