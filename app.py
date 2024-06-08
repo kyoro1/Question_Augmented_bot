@@ -11,7 +11,7 @@ tools.setClient()
 conversation_history = []
 
 ## Load the data
-df_all = pd.read_pickle('df_all.pkl')
+df_all = pd.read_pickle('./data/df_all.pkl')
 
 ## Load the prompts
 tools.load_prompts(prompt_name='QA_prompt_template', 
@@ -21,7 +21,7 @@ prompt_template = tools.promptBank['QA_prompt_template']['PROMPTS']
 
 # 1. Manage conversation
 ## Set the title
-st.title("Microsoft FAQ bot")
+st.title("Microsoft FAQ bot (unofficial)")
 
 ## Set the description
 if "messages" not in st.session_state:

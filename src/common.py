@@ -274,11 +274,9 @@ class AOAI_TOOLS(LOAD_CONFIG):
             - returned_message: returned message from AOAI
         '''
         try:
-            if len(conversation_history) == 0:
-                ## Initialize the operator
-                content_operator = self.setAOAIformat(message=prompt, role='system')
-                conversation_history.append(content_operator)
-                print('Initialized conversation')
+            ## Set system prompt
+            content_operator = self.setAOAIformat(message=prompt, role='system')
+            conversation_history.append(content_operator)
 
             ## Set user message
             content_caller = self.setAOAIformat(message=INPUT, role='user')
@@ -316,6 +314,7 @@ class AOAI_TOOLS(LOAD_CONFIG):
             query_result['augmented_query'] = df_tmp_sorted.head(1)['augmented_query'].values[0]
             query_result['original_answer'] = df_tmp_sorted.head(1)['original_answer'].values[0]
             query_result['similarity'] = df_tmp_sorted.head(1)['similarity'].values[0]
+            print(f"Cosine Similarity: {query_result['similarity']}")
             return query_result
         except Exception as e:
             print(e)
