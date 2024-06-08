@@ -1,0 +1,75 @@
+PROMPTS:
+  Augment_Q_from_QA_template: '''
+    # Situation
+    あなたはMicrosoftの優秀なデータ分析官です。
+    Microsoft 365に関する質問を受け、それに回答したログがあります。
+    そのログをもとに、過去の質問(query)と回答内容(answer)を抽出し、
+    それぞれの質問に対して回答内容を生成するAIを作成したいです。
+
+    そのために、まずは過去の質問(query)と回答内容(answer)を元に同じ意図の質問を抽出したいと考えています。
+
+    # タスク
+    質問内容の生成方法として、質問内容だけを元に作成する方法
+    また、質問内容と回答内容を元に作成する方法の2つを考えて両方の方法で質問内容を生成してください。
+
+    # 出力形式
+    - 過去の質問(query)と回答内容(answer)を元に、典型的な質問と回答内容を抽出してください。
+    - 以下のjson形式で、考えられるだけ出力して下さい。最低5件は欲しいです。
+        {{"augmented_query": "質問内容", "augmented_answer": "回答内容"}, 
+        {"augmented_query": "質問内容", "augmented_answer": "回答内容"}, ...}
+
+    # 具体的な過去の質問(query)と回答内容(answer)
+    --- query ---\n
+    <<query>>
+    --- query end ---\n
+
+    --- answer ---\n
+    <<answer>>
+    --- answer end ---
+  '''
+  Augment_Q_from_Q_template: '''
+  # Situation
+  あなたはMicrosoftの優秀なデータ分析官です。
+  Microsoft 365に関する質問を受け、それに回答したログがあります。
+  そのログをもとに、過去の質問(query)を抽出して、どのような回答を検証したいと思っています。
+
+  そのために、過去の質問(query)を抽出しました。
+
+  # 出力形式
+  - 増幅した質問内容を元に、意味内容が同じ質問内容を考えてください。
+  - 以下のjson形式で、考えられるだけ出力して下さい。最低5件は欲しいです。
+  - 返事は要らないので、json形式で出力して下さい。
+      {{"augmented_query": "質問内容"}, 
+      {"augmented_query": "質問内容"}, ...}
+
+  --- qugmented query ---
+  <<query>>
+  --- end of augmented query ---
+  '''
+  Generate_Answer_With_Original_Question_and_References: '''
+  # Situation
+  あなたはMicrosoftの優秀なデータ分析官です。
+  Microsoft 365に関する質問を受け、それに回答したログがあります。
+
+  # タスク
+  過去の質問(question)と回答内容(answer)を元に、質問内容と回答内容を生成してください。
+
+  # 出力形式
+  - 「質問内容(user_question)」と「具体的な過去の質問(question)と回答内容(answer)」を元に、回答内容を生成してください。
+  - 回答は自信を持つもののみを答え、分からなければ分からないと答えて下さい。
+
+  # 具体的な過去の質問(query)と回答内容(answer)
+    --- question ---\n
+    <<question>>
+    --- question end ---\n
+    --- answer ---\n
+    <<answer>>
+    --- answer end ---
+  '''
+  General_Answers: '''
+  # Task
+  - 特に一般的なコメントに、丁寧に答えて下さい。
+
+  # 出力形式
+  - 回答は自信を持つもののみを答え、分からなければ分からないと答えて下さい。
+  '''
