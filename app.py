@@ -19,6 +19,16 @@ tools.load_prompts(prompt_name='QA_prompt_template',
 prompt_template = tools.promptBank['QA_prompt_template']['PROMPTS']
 
 
+#0. 
+
+with st.sidebar:
+    st.title('Mode')
+
+    mode = st.radio(
+    "Select the modes",
+    ["Just run", "debug"],
+    captions = ["Just run", 'Show the probability, used prompt'])
+
 # 1. Manage conversation
 ## Set the title
 st.title("Microsoft FAQ bot (unofficial)")
@@ -48,6 +58,8 @@ if input := st.chat_input("Type your requests."):
                             query_result=query_result,
                             threshold=tools.CONFIDENCE_COSINE_SIMILARITY)
     
+    print(prompt)
+
     ## Generate the response
     conversation_history, returned_message = tools.manualConversation(INPUT=input,
                                             prompt=prompt,
@@ -58,3 +70,7 @@ if input := st.chat_input("Type your requests."):
     ## Display the response
     with st.chat_message("assistant"):
         st.markdown(returned_message)
+        if mode == 'debug':
+            st.write(f"Cosine Similarity: {query_result['similarity']}")
+            st.write("Used prompt:")
+            st.code(prompt)
