@@ -5,7 +5,7 @@
 ![image](./images/screenshot.png)
 
 - 画像から分かる通り、実際のFAQ2024/3/8時点の[このサイト](./https://www.microsoft.com/ja-jp/microsoft-365/microsoft-365-for-home-and-school-faq)から幾つかのFAQを[コピーして利用](./data/Original_FAQ_M365.csv)しており、Microsoft社の公式見解ではありません。
-- 画面の左ペインの`debug`を選択すると、質問と利用したknowledge base内の最も高いcosine類似度の値(0.0-1.0)と、文言を生成する際に使用したpromptを表示します
+- 画面の左ペインの`debug`を選択すると、質問と利用したknowledge base内の最も高いcosine類似度の値(0.0-1.0)と、文言を生成する際に使用したpromptを表示します。
 
 # 主な機能
 
